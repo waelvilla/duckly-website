@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import urllib.request
@@ -15,6 +16,25 @@ LOCAL = ROOT / "framerusercontent"
 SITE_ID = "j6NSi8nacPdId5ZW27YZz"
 SITE_BASE = f"{CDN}/sites/{SITE_ID}/"
 SAVE_AS_PREFIX = "./Adion - Digital Agency Framer Template_files/"
+
+SITE_TITLE = "Duckly — Focus with Memory"
+SITE_DESCRIPTION = (
+    "Duckly is a quiet AI focus companion that helps you choose one clear outcome, "
+    "work without noise, and turn each session into next steps you can actually use."
+)
+SITE_CANONICAL = "https://duckly.app/"
+SITE_FAVICON = "./favicon.svg"
+OLD_FAVICONS = (
+    "./framerusercontent/assets/EYWoEmOsMtYinqapjTJpDvbyM.png",
+    "./framerusercontent/images/EYWoEmOsMtYinqapjTJpDvbyM.png",
+    "./framerusercontent/images/c2VO3XvtRBUIMqFK9TP66uzRM.png",
+)
+OLD_SITE_TITLE = "Adion - Digital Agency Framer Template"
+OLD_SITE_DESCRIPTION = (
+    "Adion creates colorful, playful designs that help brands stand out. "
+    "We mix creative ideas with clear goals to build memorable brand experiences."
+)
+OLD_FRAMER_URL = "https://reserved-follow-277116.framer.app"
 
 URL_RE = re.compile(
     r"https://framerusercontent\.com/(?:[a-zA-Z0-9_./-]+(?:\.[a-zA-Z0-9]+)?(?:\?[a-zA-Z0-9=&._%-]+)?)"
@@ -87,25 +107,46 @@ def prepare_html() -> None:
     )
 
     content = content.replace(
-        "Adion - Digital Agency Framer Template",
-        "Duckly — Focus with Memory",
+        OLD_SITE_TITLE,
+        SITE_TITLE,
     )
     content = content.replace(
-        "Adion creates colorful, playful designs that help brands stand out. We mix creative ideas with clear goals to build memorable brand experiences.",
-        "Duckly is a quiet AI focus companion that helps you choose one clear outcome, work without noise, and turn each session into next steps you can actually use.",
+        OLD_SITE_DESCRIPTION,
+        SITE_DESCRIPTION,
     )
 
     content = content.replace(
-        "https://reserved-follow-277116.framer.app/about",
+        f"{OLD_FRAMER_URL}/about",
         "#about",
     )
     content = content.replace(
-        "https://reserved-follow-277116.framer.app/contact",
+        f"{OLD_FRAMER_URL}/contact",
         "https://docs.google.com/forms/d/e/1FAIpQLSeIEhVFb2JYUj-_UKJpMB7HcOUd-r-tCgSvQYD97iHH9iaBEg/viewform",
     )
     content = content.replace(
-        'href="https://reserved-follow-277116.framer.app/"',
+        f'href="{OLD_FRAMER_URL}/"',
         'href="./index.html"',
+    )
+
+    content = re.sub(
+        r'<meta property="og:url" content="[^"]*">',
+        f'<meta property="og:url" content="{SITE_CANONICAL}">',
+        content,
+    )
+    content = re.sub(
+        r'<link rel="canonical" href="[^"]*">',
+        f'<link rel="canonical" href="{SITE_CANONICAL}">',
+        content,
+    )
+    if 'property="og:site_name"' not in content:
+        content = content.replace(
+            '<meta property="og:type" content="website">',
+            '<meta property="og:site_name" content="Duckly">\n    <meta property="og:type" content="website">',
+        )
+
+    content = content.replace(
+        OLD_FRAMER_URL,
+        SITE_CANONICAL.rstrip("/"),
     )
 
     if 'id="about"' not in content:
@@ -121,8 +162,79 @@ def prepare_html() -> None:
             '<meta name="viewport" content="width=device-width">\n\t<style>html { scroll-behavior: smooth; }</style>',
         )
 
+    favicon_links = (
+        '    <link href="./favicon.svg" rel="icon" type="image/svg+xml">\n'
+        '    <link href="./favicon.svg" rel="apple-touch-icon">'
+    )
+    content = re.sub(
+        r'<link href="\./framerusercontent/images/[^"]+" rel="icon" media="\(prefers-color-scheme: light\)">\s*'
+        r'<link href="\./framerusercontent/images/[^"]+" rel="icon" media="\(prefers-color-scheme: dark\)">',
+        favicon_links,
+        content,
+    )
+    if 'href="./favicon.svg" rel="icon"' not in content:
+        content = content.replace(
+            '<meta name="framer-search-index-fallback"',
+            f'{favicon_links}\n    <meta name="framer-search-index-fallback"',
+            1,
+        )
+
     index_path.write_text(content, encoding="utf-8")
     print("Prepared index.html")
+
+
+def patch_seo_metadata() -> None:
+    site_dir = LOCAL / "sites" / SITE_ID
+
+    def patch_strings(obj):
+        if isinstance(obj, str):
+            s = obj
+            s = s.replace(OLD_SITE_TITLE, SITE_TITLE)
+            s = s.replace(OLD_SITE_DESCRIPTION, SITE_DESCRIPTION)
+            s = s.replace("@2026 Adion inc. All Right Reserved", "@2026 Duckly.app All Right Reserved")
+            s = s.replace("Adion's", "Duckly's")
+            s = s.replace("Adion\u2019s", "Duckly\u2019s")
+            s = s.replace("Adion inc.", "Duckly.app")
+            s = s.replace("We're Adion", "We're Duckly")
+            s = s.replace("We\u2019re Adion", "We\u2019re Duckly")
+            s = s.replace("At Adion,", "At Duckly,")
+            s = s.replace("with Adion.", "with Duckly.")
+            s = s.replace("with Adion", "with Duckly")
+            s = s.replace(OLD_FRAMER_URL, SITE_CANONICAL.rstrip("/"))
+            s = s.replace("Adion", "Duckly")
+            return s
+        if isinstance(obj, list):
+            return [patch_strings(x) for x in obj]
+        if isinstance(obj, dict):
+            return {k: patch_strings(v) for k, v in obj.items()}
+        return obj
+
+    for path in site_dir.glob("searchIndex*.json"):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        path.write_text(
+            json.dumps(patch_strings(data), ensure_ascii=False, separators=(",", ":")),
+            encoding="utf-8",
+        )
+
+    bundle_replacements = [
+        (OLD_SITE_TITLE, SITE_TITLE),
+        (OLD_SITE_DESCRIPTION, SITE_DESCRIPTION),
+        (f"siteCanonicalURL:`{OLD_FRAMER_URL}`", f"siteCanonicalURL:`{SITE_CANONICAL.rstrip('/')}`"),
+        (f"title:`{OLD_SITE_TITLE}`", f"title:`{SITE_TITLE}`"),
+        (OLD_FRAMER_URL, SITE_CANONICAL.rstrip("/")),
+    ]
+    for old_favicon in OLD_FAVICONS:
+        bundle_replacements.append((f"favicon:`{old_favicon}`", f"favicon:`{SITE_FAVICON}`"))
+    for pattern in ["shared-lib.*.mjs", "script_main.*.mjs"]:
+        for path in list(site_dir.glob(pattern)) + list(ROOT.glob(pattern)):
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            updated = text
+            for old, new in bundle_replacements:
+                updated = updated.replace(old, new)
+            if updated != text:
+                path.write_text(updated, encoding="utf-8")
+
+    print("Patched SEO metadata")
 
 
 def patch_bootstrap_files() -> None:
@@ -262,6 +374,7 @@ def localize_assets() -> None:
     changed = rewrite_files()
     patch_script_file()
     patch_bootstrap_files()
+    patch_seo_metadata()
 
     print(f"Downloaded {len(urls) - len(failed)}/{len(urls)} assets into {LOCAL}")
     if failed:
