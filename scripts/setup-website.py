@@ -35,6 +35,116 @@ OLD_SITE_DESCRIPTION = (
     "We mix creative ideas with clear goals to build memorable brand experiences."
 )
 OLD_FRAMER_URL = "https://reserved-follow-277116.framer.app"
+NAVBAR_WAITLIST_BUTTON_OLD = (
+    "layoutId:`HpoDd5nS4-container`,nodeId:`HpoDd5nS4`,rendersWithMotion:!0,scopeId:`vDE9BFfyG`,"
+    "children:f(H,{B2127CXP5:{borderColor:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`,"
+    "borderStyle:`solid`,borderWidth:1},h_cNcTdkm:`var(--token-04892466-a786-493b-80ca-15aa801890e0, rgb(255, 255, 255))`,"
+    "height:`100%`,id:`HpoDd5nS4`,IlPhTddpy:`Join the waitlist`,"
+    "krcX6ZNc0:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`"
+)
+NAVBAR_WAITLIST_BUTTON_NEW = (
+    "layoutId:`HpoDd5nS4-container`,nodeId:`HpoDd5nS4`,rendersWithMotion:!0,scopeId:`vDE9BFfyG`,"
+    "children:f(H,{B2127CXP5:{borderColor:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`,"
+    "borderStyle:`solid`,borderWidth:1},h_cNcTdkm:`var(--token-04892466-a786-493b-80ca-15aa801890e0, rgb(255, 255, 255))`,"
+    "height:`100%`,id:`HpoDd5nS4`,IlPhTddpy:`Join the waitlist`,"
+    "krcX6ZNc0:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`"
+)
+NAVBAR_WAITLIST_BUTTON_TRANSPARENT = (
+    "layoutId:`HpoDd5nS4-container`,nodeId:`HpoDd5nS4`,rendersWithMotion:!0,scopeId:`vDE9BFfyG`,"
+    "children:f(H,{B2127CXP5:{borderColor:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`,"
+    "borderStyle:`solid`,borderWidth:1},h_cNcTdkm:`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`,"
+    "height:`100%`,id:`HpoDd5nS4`,IlPhTddpy:`Join the waitlist`,"
+    "krcX6ZNc0:`rgba(0, 0, 0, 0)`"
+)
+NAVBAR_WAITLIST_BUTTON_CSS = """html { scroll-behavior: smooth; }
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-wWwqq {
+\tbackground-color: rgb(13, 13, 13) !important;
+}
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq .framer-j35ygy,
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq .framer-j35ygy p,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-j35ygy,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-j35ygy p {
+\t--extracted-r6o4lv: rgb(255, 255, 255) !important;
+\t--variable-reference-h_cNcTdkm-dnIh1FUZh: rgb(255, 255, 255) !important;
+\t--framer-text-color: rgb(255, 255, 255) !important;
+\tcolor: rgb(255, 255, 255) !important;
+}
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq:hover,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-wWwqq:hover {
+\tbackground-color: rgb(255, 255, 255) !important;
+}
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq:hover .framer-j35ygy,
+.framer-a10wad-container .framer-qti1r7-container .framer-wWwqq:hover .framer-j35ygy p,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-wWwqq:hover .framer-j35ygy,
+.framer-TB78N:not(.framer-v-imxff4):not(.framer-v-1l88t2o) .framer-qti1r7-container .framer-wWwqq:hover .framer-j35ygy p {
+\t--extracted-r6o4lv: rgb(13, 13, 13) !important;
+\t--variable-reference-h_cNcTdkm-dnIh1FUZh: rgb(13, 13, 13) !important;
+\t--framer-text-color: rgb(13, 13, 13) !important;
+\tcolor: rgb(13, 13, 13) !important;
+}"""
+NAVBAR_WAITLIST_MARKER = 'framer-qti1r7-container" style="opacity: 1;">'
+WAITLIST_URL = (
+    "https://docs.google.com/forms/d/e/1FAIpQLSeIEhVFb2JYUj-_UKJpMB7HcOUd-r-tCgSvQYD97iHH9iaBEg/viewform"
+)
+HERO_WAITLIST_BUTTON_OLD = (
+    'a(`div`,{className:`framer-12w6hmv`,"data-framer-name":`Button-ui-1`,children:a(R,{__fromCanvasComponent:!0,'
+    'children:a(i,{children:a(`p`,{className:`framer-styles-preset-biyt9b`,"data-styles-preset":`Fs7W47lcr`,dir:`auto`,'
+    'style:{"--framer-text-color":`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`},'
+    "children:`Join the waitlist`})}),className:`framer-19f30tb`,fonts:[`Inter`],verticalAlignment:`top`,"
+    "withExternalLayout:!0})}),"
+)
+HERO_WAITLIST_BUTTON_NEW = (
+    f'a(`a`,{{href:`{WAITLIST_URL}`,rel:`noopener`,className:`framer-12w6hmv`,"data-framer-name":`Button-ui-1`,'
+    "children:a(R,{__fromCanvasComponent:!0,"
+    'children:a(i,{children:a(`p`,{className:`framer-styles-preset-biyt9b`,"data-styles-preset":`Fs7W47lcr`,dir:`auto`,'
+    'style:{"--framer-text-color":`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`},'
+    "children:`Join the waitlist`})}),className:`framer-19f30tb`,fonts:[`Inter`],verticalAlignment:`top`,"
+    "withExternalLayout:!0})}),"
+)
+HERO_WAITLIST_SSR_OPEN = '<div class="framer-12w6hmv" data-framer-name="Button-ui-1">'
+HERO_WAITLIST_SSR_CLOSE = (
+    'Join the waitlist</p></div></div><div class="framer-a5xcbu"'
+)
+HERO_WAITLIST_SSR_CLOSE_LINK = (
+    f'Join the waitlist</p></div></a><div class="framer-a5xcbu"'
+)
+HOW_IT_WORKS_ANCHOR = "#how-it-works"
+HERO_HOW_IT_WORKS_BUTTON_OLD = (
+    'a(`div`,{className:`framer-a5xcbu`,"data-border":!0,"data-framer-name":`Button-ui-1`,children:a(R,{__fromCanvasComponent:!0,'
+    'children:a(i,{children:a(`p`,{className:`framer-styles-preset-biyt9b`,"data-styles-preset":`Fs7W47lcr`,dir:`auto`,'
+    'style:{"--framer-text-color":`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`},'
+    "children:`See how it works`})}),className:`framer-1kixgl2`,fonts:[`Inter`],verticalAlignment:`top`,"
+    "withExternalLayout:!0})})"
+)
+HERO_HOW_IT_WORKS_BUTTON_NEW = (
+    f'a(`a`,{{href:`{HOW_IT_WORKS_ANCHOR}`,className:`framer-a5xcbu`,"data-border":!0,"data-framer-name":`Button-ui-1`,'
+    "children:a(R,{__fromCanvasComponent:!0,"
+    'children:a(i,{children:a(`p`,{className:`framer-styles-preset-biyt9b`,"data-styles-preset":`Fs7W47lcr`,dir:`auto`,'
+    'style:{"--framer-text-color":`var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13))`},'
+    "children:`See how it works`})}),className:`framer-1kixgl2`,fonts:[`Inter`],verticalAlignment:`top`,"
+    "withExternalLayout:!0})})"
+)
+SECTION_SERVICES_ID_OLD = 'data-framer-name="section-services"'
+SECTION_SERVICES_ID_NEW = 'id="how-it-works" data-framer-name="section-services"'
+SECTION_SERVICES_ID_JS_OLD = (
+    'c(`section`,{className:`framer-1bpfl88`,"data-framer-name":`section-services`,'
+)
+SECTION_SERVICES_ID_JS_NEW = (
+    'c(`section`,{id:`how-it-works`,className:`framer-1bpfl88`,"data-framer-name":`section-services`,'
+)
+HERO_HOW_IT_WORKS_SSR_OPEN = (
+    '<div class="framer-a5xcbu" data-border="true" data-framer-name="Button-ui-1">'
+)
+HERO_HOW_IT_WORKS_SSR_OPEN_LINK = (
+    f'<a class="framer-a5xcbu" data-border="true" data-framer-name="Button-ui-1" href="{HOW_IT_WORKS_ANCHOR}">'
+)
+HERO_HOW_IT_WORKS_SSR_CLOSE = (
+    'See how it works</p></div></div></div></div></section><section class="framer-1bpfl88" data-framer-name="section-services"'
+)
+HERO_HOW_IT_WORKS_SSR_CLOSE_LINK = (
+    'See how it works</p></div></a></div></div></section><section id="how-it-works" class="framer-1bpfl88" data-framer-name="section-services"'
+)
 
 URL_RE = re.compile(
     r"https://framerusercontent\.com/(?:[a-zA-Z0-9_./-]+(?:\.[a-zA-Z0-9]+)?(?:\?[a-zA-Z0-9=&._%-]+)?)"
@@ -121,7 +231,7 @@ def prepare_html() -> None:
     )
     content = content.replace(
         f"{OLD_FRAMER_URL}/contact",
-        "https://docs.google.com/forms/d/e/1FAIpQLSeIEhVFb2JYUj-_UKJpMB7HcOUd-r-tCgSvQYD97iHH9iaBEg/viewform",
+        WAITLIST_URL,
     )
     content = content.replace(
         f'href="{OLD_FRAMER_URL}/"',
@@ -156,10 +266,25 @@ def prepare_html() -> None:
             1,
         )
 
+    if 'id="how-it-works"' not in content:
+        content = content.replace(
+            SECTION_SERVICES_ID_OLD,
+            SECTION_SERVICES_ID_NEW,
+            1,
+        )
+
     if "scroll-behavior: smooth" not in content:
         content = content.replace(
             '<meta name="viewport" content="width=device-width">',
-            '<meta name="viewport" content="width=device-width">\n\t<style>html { scroll-behavior: smooth; }</style>',
+            f'<meta name="viewport" content="width=device-width">\n\t<style>{NAVBAR_WAITLIST_BUTTON_CSS}</style>',
+        )
+    else:
+        content = re.sub(
+            r"<style>html \{ scroll-behavior: smooth; \}.*?</style>",
+            f"<style>{NAVBAR_WAITLIST_BUTTON_CSS}</style>",
+            content,
+            count=1,
+            flags=re.DOTALL,
         )
 
     favicon_links = (
@@ -179,8 +304,53 @@ def prepare_html() -> None:
             1,
         )
 
+    content = patch_navbar_waitlist_ssr(content)
+    content = patch_hero_waitlist_ssr(content)
+    content = patch_hero_how_it_works_ssr(content)
+
     index_path.write_text(content, encoding="utf-8")
     print("Prepared index.html")
+
+
+def patch_navbar_waitlist_ssr(content: str) -> str:
+    marker = NAVBAR_WAITLIST_MARKER
+    start = content.find(marker)
+    if start < 0:
+        return content
+    end = content.find("</a><!--/$--></div></div></nav>", start)
+    if end < 0:
+        return content
+
+    chunk = content[start:end]
+    chunk = chunk.replace(
+        'framer-v-vd11uu hover framer-1byw23u"',
+        'framer-v-vd11uu framer-1byw23u"',
+    )
+    for old_bg in (
+        "background-color: rgba(4, 4, 4, 0.1);",
+        "background-color: transparent;",
+    ):
+        chunk = chunk.replace(
+            old_bg,
+            "background-color: var(--token-bbd5a4a8-5607-4704-9a03-527afeba84bf, rgb(13, 13, 13));",
+        )
+    chunk = chunk.replace(
+        "--extracted-r6o4lv: rgba(82, 82, 82, 1)",
+        "--extracted-r6o4lv: rgb(255, 255, 255)",
+    )
+    chunk = chunk.replace(
+        "--extracted-r6o4lv: rgb(13, 13, 13)",
+        "--extracted-r6o4lv: rgb(255, 255, 255)",
+    )
+    chunk = chunk.replace(
+        "--variable-reference-h_cNcTdkm-dnIh1FUZh: var(--token-04892466-a786-493b-80ca-15aa801890e0, rgb(255, 255, 255))",
+        "--variable-reference-h_cNcTdkm-dnIh1FUZh: rgb(255, 255, 255)",
+    )
+    chunk = chunk.replace(
+        "--variable-reference-h_cNcTdkm-dnIh1FUZh: rgb(13, 13, 13)",
+        "--variable-reference-h_cNcTdkm-dnIh1FUZh: rgb(255, 255, 255)",
+    )
+    return content[:start] + chunk + content[end:]
 
 
 def patch_seo_metadata() -> None:
@@ -235,6 +405,74 @@ def patch_seo_metadata() -> None:
                 path.write_text(updated, encoding="utf-8")
 
     print("Patched SEO metadata")
+
+
+def patch_hero_waitlist_ssr(content: str) -> str:
+    if HERO_WAITLIST_SSR_CLOSE not in content:
+        return content
+    content = content.replace(
+        HERO_WAITLIST_SSR_OPEN,
+        f'<a class="framer-12w6hmv" data-framer-name="Button-ui-1" href="{WAITLIST_URL}" rel="noopener">',
+        1,
+    )
+    content = content.replace(HERO_WAITLIST_SSR_CLOSE, HERO_WAITLIST_SSR_CLOSE_LINK, 1)
+    return content
+
+
+def patch_hero_how_it_works_ssr(content: str) -> str:
+    if HERO_HOW_IT_WORKS_SSR_CLOSE not in content:
+        if 'href="#how-it-works"' in content and 'id="how-it-works"' in content:
+            return content
+        return content
+    content = content.replace(
+        HERO_HOW_IT_WORKS_SSR_OPEN,
+        HERO_HOW_IT_WORKS_SSR_OPEN_LINK,
+        1,
+    )
+    content = content.replace(HERO_HOW_IT_WORKS_SSR_CLOSE, HERO_HOW_IT_WORKS_SSR_CLOSE_LINK, 1)
+    return content
+
+
+def patch_hero_how_it_works_link() -> None:
+    site_dir = LOCAL / "sites" / SITE_ID
+    for path in site_dir.glob("*.mjs"):
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        updated = text
+        if SECTION_SERVICES_ID_JS_OLD in updated:
+            updated = updated.replace(SECTION_SERVICES_ID_JS_OLD, SECTION_SERVICES_ID_JS_NEW, 1)
+        if HERO_HOW_IT_WORKS_BUTTON_OLD in updated:
+            updated = updated.replace(
+                HERO_HOW_IT_WORKS_BUTTON_OLD,
+                HERO_HOW_IT_WORKS_BUTTON_NEW,
+            )
+        if updated != text:
+            path.write_text(updated, encoding="utf-8")
+            print(f"Patched hero how-it-works link in {path.relative_to(ROOT)}")
+
+
+def patch_hero_waitlist_link() -> None:
+    site_dir = LOCAL / "sites" / SITE_ID
+    for path in site_dir.glob("*.mjs"):
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        if HERO_WAITLIST_BUTTON_OLD not in text:
+            continue
+        updated = text.replace(HERO_WAITLIST_BUTTON_OLD, HERO_WAITLIST_BUTTON_NEW)
+        path.write_text(updated, encoding="utf-8")
+        print(f"Patched hero waitlist link in {path.relative_to(ROOT)}")
+
+
+def patch_navbar_waitlist_button() -> None:
+    site_dir = LOCAL / "sites" / SITE_ID
+    for pattern in ["script_main.*.mjs"]:
+        for path in list(site_dir.glob(pattern)) + list(ROOT.glob(pattern)):
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            updated = text
+            for old in (NAVBAR_WAITLIST_BUTTON_OLD, NAVBAR_WAITLIST_BUTTON_TRANSPARENT):
+                if old in updated:
+                    updated = updated.replace(old, NAVBAR_WAITLIST_BUTTON_NEW)
+            if updated != text:
+                path.write_text(updated, encoding="utf-8")
+                print(f"Patched navbar waitlist button in {path.relative_to(ROOT)}")
 
 
 def patch_bootstrap_files() -> None:
@@ -375,6 +613,9 @@ def localize_assets() -> None:
     patch_script_file()
     patch_bootstrap_files()
     patch_seo_metadata()
+    patch_navbar_waitlist_button()
+    patch_hero_waitlist_link()
+    patch_hero_how_it_works_link()
 
     print(f"Downloaded {len(urls) - len(failed)}/{len(urls)} assets into {LOCAL}")
     if failed:
