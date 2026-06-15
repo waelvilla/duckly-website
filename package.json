@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 8765",
+    "setup": "python3 scripts/setup-website.py",
     "localize": "python3 scripts/localize-framer-assets.py"
   }
 }
