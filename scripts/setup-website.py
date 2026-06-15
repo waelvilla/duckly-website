@@ -83,6 +83,39 @@ NAVBAR_WAITLIST_BUTTON_CSS = """html { scroll-behavior: smooth; }
 \t--framer-text-color: rgb(13, 13, 13) !important;
 \tcolor: rgb(13, 13, 13) !important;
 }"""
+HERO_BUTTON_CSS = """
+.framer-M3oV2 a.framer-12w6hmv,
+.framer-M3oV2 a.framer-a5xcbu {
+\ttext-decoration: none !important;
+\tcolor: inherit;
+\tcursor: pointer;
+}
+.framer-M3oV2 a.framer-12w6hmv .framer-19f30tb,
+.framer-M3oV2 a.framer-12w6hmv .framer-19f30tb p,
+.framer-M3oV2 a.framer-a5xcbu .framer-1kixgl2,
+.framer-M3oV2 a.framer-a5xcbu .framer-1kixgl2 p {
+\t--framer-link-text-decoration: none !important;
+\t--framer-link-text-color: inherit !important;
+\ttext-decoration: none !important;
+}
+.framer-M3oV2 a.framer-12w6hmv:hover {
+\tbackground-color: rgb(13, 13, 13) !important;
+}
+.framer-M3oV2 a.framer-12w6hmv:hover .framer-19f30tb,
+.framer-M3oV2 a.framer-12w6hmv:hover .framer-19f30tb p {
+\t--framer-text-color: rgb(255, 255, 255) !important;
+\tcolor: rgb(255, 255, 255) !important;
+}
+.framer-M3oV2 a.framer-a5xcbu:hover {
+\tbackground-color: rgb(13, 13, 13) !important;
+\t--border-color: rgb(13, 13, 13) !important;
+}
+.framer-M3oV2 a.framer-a5xcbu:hover .framer-1kixgl2,
+.framer-M3oV2 a.framer-a5xcbu:hover .framer-1kixgl2 p {
+\t--framer-text-color: rgb(255, 255, 255) !important;
+\tcolor: rgb(255, 255, 255) !important;
+}"""
+SITE_CUSTOM_CSS = NAVBAR_WAITLIST_BUTTON_CSS + HERO_BUTTON_CSS
 NAVBAR_WAITLIST_MARKER = 'framer-qti1r7-container" style="opacity: 1;">'
 WAITLIST_URL = (
     "https://docs.google.com/forms/d/e/1FAIpQLSeIEhVFb2JYUj-_UKJpMB7HcOUd-r-tCgSvQYD97iHH9iaBEg/viewform"
@@ -276,12 +309,12 @@ def prepare_html() -> None:
     if "scroll-behavior: smooth" not in content:
         content = content.replace(
             '<meta name="viewport" content="width=device-width">',
-            f'<meta name="viewport" content="width=device-width">\n\t<style>{NAVBAR_WAITLIST_BUTTON_CSS}</style>',
+            f'<meta name="viewport" content="width=device-width">\n\t<style>{SITE_CUSTOM_CSS}</style>',
         )
     else:
         content = re.sub(
             r"<style>html \{ scroll-behavior: smooth; \}.*?</style>",
-            f"<style>{NAVBAR_WAITLIST_BUTTON_CSS}</style>",
+            f"<style>{SITE_CUSTOM_CSS}</style>",
             content,
             count=1,
             flags=re.DOTALL,
