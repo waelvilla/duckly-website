@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -182,6 +183,9 @@ HERO_HOW_IT_WORKS_SSR_CLOSE_LINK = (
 URL_RE = re.compile(
     r"https://framerusercontent\.com/(?:[a-zA-Z0-9_./-]+(?:\.[a-zA-Z0-9]+)?(?:\?[a-zA-Z0-9=&._%-]+)?)"
 )
+LOCAL_QUERY_URL_RE = re.compile(
+    r"\./framerusercontent/([a-zA-Z0-9_./-]+(?:\.[a-zA-Z0-9]+)?\?[a-zA-Z0-9=&._%-]+)"
+)
 
 
 def clean_url(url: str) -> str:
@@ -189,12 +193,22 @@ def clean_url(url: str) -> str:
 
 
 def url_to_local_path(url: str) -> Path:
-    rel = clean_url(url)[len(CDN) + 1 :]
+    parsed = urllib.parse.urlsplit(clean_url(url))
+    rel = parsed.path.lstrip("/")
+    if parsed.query:
+        path = Path(rel)
+        safe_query = re.sub(r"[^a-zA-Z0-9._-]+", "_", parsed.query).strip("_")
+        rel = (path.with_name(f"{path.stem}__{safe_query}{path.suffix}")).as_posix()
     return LOCAL / rel
 
 
 def local_url(url: str) -> str:
     return f"./{url_to_local_path(url).relative_to(ROOT).as_posix()}"
+
+
+def local_query_url_to_cdn(url: str) -> str:
+    rel = clean_url(url).removeprefix("./framerusercontent/")
+    return f"{CDN}/{rel}"
 
 
 def download(url: str) -> tuple[str, bool, str]:
@@ -540,7 +554,7 @@ def patch_script_file() -> None:
 def collect_urls() -> set[str]:
     urls: set[str] = set()
     for path in ROOT.rglob("*"):
-        if not path.is_file() or path.is_relative_to(LOCAL):
+        if not path.is_file():
             continue
         if path.suffix not in {".html", ".mjs", ".js", ".css", ""} and path.name not in {
             "script"
@@ -548,6 +562,7 @@ def collect_urls() -> set[str]:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
         urls.update(clean_url(match) for match in URL_RE.findall(text))
+        urls.update(local_query_url_to_cdn(match) for match in LOCAL_QUERY_URL_RE.findall(text))
     return urls
 
 
@@ -619,6 +634,10 @@ def rewrite_files() -> int:
         except Exception:
             continue
         updated = URL_RE.sub(lambda m: local_url(clean_url(m.group(0))), original)
+        updated = LOCAL_QUERY_URL_RE.sub(
+            lambda m: local_url(local_query_url_to_cdn(m.group(0))),
+            updated,
+        )
         if updated != original:
             path.write_text(updated, encoding="utf-8")
             changed += 1
