@@ -30,6 +30,12 @@ OLD_FAVICONS = (
     "./framerusercontent/images/EYWoEmOsMtYinqapjTJpDvbyM.png",
     "./framerusercontent/images/c2VO3XvtRBUIMqFK9TP66uzRM.png",
 )
+STATIC_IMAGE_REPLACEMENTS = {
+    "./q66nZqcnlzYlValzuth0V8R5K0.svg": "./framerusercontent/images/q66nZqcnlzYlValzuth0V8R5K0__width_239_height_65.svg",
+    "./1Um88N1TyRCrfO6GI997zY9Kv00.png": "./framerusercontent/images/1Um88N1TyRCrfO6GI997zY9Kv00__width_184_height_152.png",
+    "./tKG9I8t6TMTCZzxPWFd2wW9fYA.png": "./framerusercontent/images/tKG9I8t6TMTCZzxPWFd2wW9fYA__width_184_height_152.png",
+    "./PF84ZkAIYt7JMu8b3LbaM6b7Zs.png": "./framerusercontent/images/PF84ZkAIYt7JMu8b3LbaM6b7Zs__width_184_height_152.png",
+}
 OLD_SITE_TITLE = "Adion - Digital Agency Framer Template"
 OLD_SITE_DESCRIPTION = (
     "Adion creates colorful, playful designs that help brands stand out. "
@@ -232,6 +238,8 @@ def prepare_html() -> None:
     content = index_path.read_text(encoding="utf-8")
 
     content = content.replace(SAVE_AS_PREFIX, "./")
+    for old_image, new_image in STATIC_IMAGE_REPLACEMENTS.items():
+        content = content.replace(old_image, new_image)
 
     content = re.sub(
         r'<script>try\{if\(localStorage\.getItem\("__framer_force_showing_editorbar_since"\)\).*?</script>',
